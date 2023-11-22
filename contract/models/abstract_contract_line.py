@@ -16,7 +16,11 @@ class ContractAbstractContractLine(models.AbstractModel):
     _name = "contract.abstract.contract.line"
     _description = "Abstract Recurring Contract Line"
 
-    product_id = fields.Many2one("product.product", string="Product")
+    product_id = fields.Many2one(
+        "product.product",
+        string="Product",
+        change_default=True,
+    )
 
     name = fields.Text(string="Description", required=True)
     quantity = fields.Float(default=1.0, required=True)

@@ -2324,7 +2324,7 @@ class TestContract(TestContractBase):
         contract_form.line_recurrence = False
         for field in vals:
             setattr(contract_form, field, vals[field])
-        with contract_form.contract_line_fixed_ids.new() as line_form:
+        with contract_form.contract_line_ids.new() as line_form:
             line_form.product_id = self.product_1
         contract2 = contract_form.save()
         for field in vals:
