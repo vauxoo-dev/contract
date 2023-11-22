@@ -145,29 +145,35 @@ class ContractAbstractContractLine(models.AbstractModel):
         We need to re-assign the original value for avoiding a missing error.
         """
         for record in self:
-            if record.contract_id.line_recurrence:
-                record[field] = record[field]
-            else:
-                record[field] = record.contract_id[field]
+            record[field] = record[field]
+            # if record.contract_id.line_recurrence:
+            #     record[field] = record[field]
+            # else:
+            #     record[field] = record.contract_id[field]
 
-    @api.depends("contract_id.recurring_rule_type", "contract_id.line_recurrence")
+    # @api.depends("contract_id.recurring_rule_type", "contract_id.line_recurrence")
+    @api.depends("contract_id.recurring_rule_type")
     def _compute_recurring_rule_type(self):
         self._set_recurrence_field("recurring_rule_type")
 
-    @api.depends("contract_id.recurring_invoicing_type", "contract_id.line_recurrence")
+    # @api.depends("contract_id.recurring_invoicing_type", "contract_id.line_recurrence")
+    @api.depends("contract_id.recurring_invoicing_type")
     def _compute_recurring_invoicing_type(self):
         self._set_recurrence_field("recurring_invoicing_type")
 
-    @api.depends("contract_id.recurring_interval", "contract_id.line_recurrence")
+    # @api.depends("contract_id.recurring_interval", "contract_id.line_recurrence")
+    @api.depends("contract_id.recurring_interval")
     def _compute_recurring_interval(self):
         self._set_recurrence_field("recurring_interval")
 
-    @api.depends("contract_id.date_start", "contract_id.line_recurrence")
+    # @api.depends("contract_id.date_start", "contract_id.line_recurrence")
+    @api.depends("contract_id.date_start")
     def _compute_date_start(self):
         self._set_recurrence_field("date_start")
 
     # pylint: disable=missing-return
-    @api.depends("contract_id.recurring_next_date", "contract_id.line_recurrence")
+    # @api.depends("contract_id.recurring_next_date", "contract_id.line_recurrence")
+    @api.depends("contract_id.recurring_next_date")
     def _compute_recurring_next_date(self):
         super()._compute_recurring_next_date()
         self._set_recurrence_field("recurring_next_date")

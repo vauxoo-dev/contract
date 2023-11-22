@@ -148,33 +148,39 @@
                         </group>
                     </group>
                     <group name="recurring_invoices">
-                        <field name="line_recurrence" class="oe_inline" />
-                        <label for="line_recurrence" />
-                        <group attrs="{'invisible': [('line_recurrence', '=', True)]}">
+                        <!-- <field name="line_recurrence" class="oe_inline" />
+                        <label for="line_recurrence" /> -->
+                        <!-- <group attrs="{'invisible': [('line_recurrence', '=', True)]}"> -->
+                        <group>
                             <label for="recurring_interval" />
                             <div class="o_row">
+                                <!-- attrs="{'required': [('line_recurrence', '=', False)]}" -->
                                 <field
                                     name="recurring_interval"
-                                    attrs="{'required': [('line_recurrence', '=', False)]}"
+                                    required="1"
                                     class="oe_inline"
                                     nolabel="1"
                                 />
+                                <!-- attrs="{'required': [('line_recurrence', '=', False)]}" -->
                                 <field
                                     name="recurring_rule_type"
-                                    attrs="{'required': [('line_recurrence', '=', False)]}"
+                                    required="1"
                                     class="oe_inline"
                                     nolabel="1"
                                 />
                             </div>
+                            <!-- attrs="{'required': [('line_recurrence', '=', False)]}" -->
                             <field
                                 name="recurring_invoicing_type"
-                                attrs="{'required': [('line_recurrence', '=', False)]}"
+                                required="1"
                             />
                         </group>
-                        <group attrs="{'invisible': [('line_recurrence', '=', True)]}">
+                        <!-- <group attrs="{'invisible': [('line_recurrence', '=', True)]}"> -->
+                        <group>
+                            <!-- <group attrs="{'invisible': [('line_recurrence', '=', True)]}"> -->
                             <field
                                 name="date_start"
-                                attrs="{'required': [('line_recurrence', '=', False)]}"
+                                required="1"
                             />
                             <field name="date_end" />
                             <field name="recurring_next_date" />

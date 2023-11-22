@@ -45,11 +45,11 @@ class ContractAbstractContract(models.AbstractModel):
         required=True,
         default=lambda self: self.env.company.id,
     )
-    line_recurrence = fields.Boolean(
-        string="Recurrence at line level?",
-        help="Mark this check if you want to control recurrrence at line level instead"
-        " of all together for the whole contract.",
-    )
+    # line_recurrence = fields.Boolean(
+    #     string="Recurrence at line level?",
+    #     help="Mark this check if you want to control recurrrence at line level instead"
+    #     " of all together for the whole contract.",
+    # )
     generation_type = fields.Selection(
         selection=lambda self: self._selection_generation_type(),
         default=lambda self: self._default_generation_type(),
