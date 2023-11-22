@@ -186,8 +186,8 @@
                     <notebook>
                         <page name="recurring_invoice_line" string="Recurring Invoices">
                             <field
-                                name="contract_line_fixed_ids"
-                                attrs="{'readonly': [('is_terminated','=',True)], 'invisible': [('line_recurrence', '=', True)]}"
+                                name="contract_line_ids"
+                                attrs="{'readonly': [('is_terminated','=',True)]}"
                                 widget="section_and_note_one2many"
                                 context="{'default_contract_type': contract_type, 'default_recurring_rule_type': recurring_rule_type, 'default_recurring_invoicing_type': recurring_invoicing_type, 'default_recurring_interval': recurring_interval, 'default_date_start': date_start, 'default_recurring_next_date': recurring_next_date}"
                             >
@@ -289,15 +289,16 @@
                                     />
                                 </tree>
                             </field>
-                            <field
+                            <!-- <field
                                 name="contract_line_ids"
-                                attrs="{'readonly': [('is_terminated','=',True)], 'invisible': [('line_recurrence', '=', False)]}"
+                                attrs="{'readonly': [('is_terminated','=',True)]}"
                                 widget="section_and_note_one2many"
                                 context="{'default_contract_type': contract_type}"
                             >
                                 <tree
                                     decoration-muted="is_canceled"
                                     decoration-info="create_invoice_visibility and not is_canceled"
+                                    editable="bottom"
                                 >
                                     <control>
                                         <create string="Add a line" />
@@ -320,6 +321,10 @@
                                         groups="analytic.group_analytic_accounting"
                                     />
                                     <field name="quantity" />
+                                    <field
+                                        name="product_uom_category_id"
+                                        invisible="1"
+                                    />
                                     <field name="uom_id" />
                                     <field
                                         name="automatic_price"
@@ -407,7 +412,7 @@
                                         attrs="{'invisible': [('is_auto_renew', '=', False)]}"
                                     />
                                 </tree>
-                            </field>
+                            </field> -->
                             <field name="note" />
                         </page>
                         <page name="modications" string="Modifications">

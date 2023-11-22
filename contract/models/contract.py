@@ -63,12 +63,11 @@ class ContractContract(models.Model):
     # the same field 2 times with different views. 2 views are needed because
     # one of them must be editable inline and the other not, which can't be
     # parametrized through attrs.
-    contract_line_fixed_ids = fields.One2many(
-        string="Contract lines (fixed)",
-        comodel_name="contract.line",
-        inverse_name="contract_id",
-    )
-
+    # contract_line_fixed_ids = fields.One2many(
+    #     string="Contract lines (fixed)",
+    #     comodel_name="contract.line",
+    #     inverse_name="contract_id",
+    # )
     user_id = fields.Many2one(
         comodel_name="res.users",
         string="Responsible",
